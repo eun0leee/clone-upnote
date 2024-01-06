@@ -58,7 +58,7 @@ const Layout = () => {
             </ol>
           </nav>
         ) : undefined}
-        <main>
+        <main className="w-[calc(100vw-208px)]">
           <Outlet />
         </main>
       </div>
