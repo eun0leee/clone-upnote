@@ -9,12 +9,12 @@ const Layout = () => {
   return (
     <div className="h-screen">
       <header className="flex h-11 items-center justify-between border-b border-b-gray-950 pl-3 pr-8">
-        <button type="button" className="h-5 w-4">
+        <button type="button" className="svg-container h-5 w-4 ">
           <img src={iconHamburger} alt="icon hamburger" />
         </button>
         <button
           type="button"
-          className="h-8 rounded-md bg-blue px-3 py-1 text-sm font-semibold text-white"
+          className="h-8 rounded-md bg-blue px-3 py-1 text-sm font-semibold text-white hover:bg-[#5B7FCD]"
         >
           New Note
         </button>
@@ -22,18 +22,22 @@ const Layout = () => {
       <div className="flex h-[calc(100vh-44px)]">
         <nav className="w-52 border-r border-r-gray-950">
           <ol>
-            <li className="mb-2 flex items-center px-3 py-2">
+            <li className="mb-2 flex items-center px-3 py-2 hover:bg-gray-900">
               <button type="button" className="mr-2 h-5 w-4">
                 <img src={iconNotes} alt="icon notes" />
               </button>
-              <span className="font-semibold text-gray-300">All Notes</span>
+              <span className="cursor-pointer font-semibold text-gray-300">
+                All Notes
+              </span>
             </li>
             <li className="flex items-center justify-between px-3 py-2">
               <div className="flex items-center">
-                <button type="button" className="mr-2 h-5 w-4">
+                <button type="button" className="svg-container mr-2 h-5 w-4">
                   <img src={iconArrowRight} alt="icon arrow right" />
                 </button>
-                <span className="font-semibold text-blue">NOTEBOOKS</span>
+                <span className="cursor-pointer font-semibold text-blue hover:text-[#5B7FCD]">
+                  NOTEBOOKS
+                </span>
               </div>
               <button type="button" className="mr-2 h-5 w-5">
                 <img src={iconAddBlue} alt="icon add blue" />
