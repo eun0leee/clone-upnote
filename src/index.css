@@ -9,3 +9,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  min-width: 1400px;
+  max-width: 1920px;
+  height: 100vh;
+  background-color: #1e1f20;
+}
