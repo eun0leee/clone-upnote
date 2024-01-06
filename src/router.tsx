@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Layout from '@components/Layout/Layout';
 import AllNotes from '@pages/AllNotes';
@@ -12,8 +12,9 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
+      { path: '/', element: <Navigate to="/allnotes" /> },
       {
-        path: '/',
+        path: '/allnotes',
         children: [
           { index: true, element: <AllNotes /> },
           { path: ':id', element: <MemoDetail /> },

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import iconAddBlue from '@/assets/icon_add_blue.svg';
 import iconArrowRight from '@/assets/icon_arrow_right.svg';
@@ -8,13 +8,16 @@ import iconNotes from '@/assets/icon_notes.svg';
 
 const Layout = () => {
   const [navToggle, setNavToggle] = useState(true);
+  const { pathname } = useLocation();
 
   const handleNavToggleBtn = () => {
     setNavToggle((prev) => !prev);
   };
 
+  const isAllNotePage = pathname.includes('/allnotes');
+
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <header className="flex h-11 items-center justify-between border-b border-b-gray-950 pl-3 pr-8">
         <button
           type="button"
@@ -32,15 +35,17 @@ const Layout = () => {
       </header>
       <div className="flex h-[calc(100vh-44px)]">
         {navToggle ? (
-          <nav className="w-52 border-r border-r-gray-950">
+          <nav className="w-56 border-r border-r-gray-950">
             <ol>
-              <li className="mb-2 flex items-center px-3 py-2 hover:bg-gray-900">
+              <li
+                className={`mb-2 flex cursor-pointer items-center px-3 py-2  hover:bg-gray-900 ${
+                  isAllNotePage ? 'bg-gray-900' : undefined
+                }`}
+              >
                 <button type="button" className="mr-2 h-5 w-4">
                   <img src={iconNotes} alt="icon notes" />
                 </button>
-                <span className="cursor-pointer font-semibold text-gray-300">
-                  All Notes
-                </span>
+                <span className="font-semibold text-gray-300">All Notes</span>
               </li>
               <li className="flex items-center justify-between px-3 py-2">
                 <div className="flex items-center">
