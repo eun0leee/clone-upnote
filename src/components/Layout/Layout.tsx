@@ -28,7 +28,7 @@ const Layout = () => {
         </button>
         <button
           type="button"
-          className="h-8 rounded-md bg-blue px-3 py-1 text-sm font-semibold text-white hover:bg-[#5B7FCD]"
+          className="h-8 rounded-md bg-blue-500 px-3 py-1 text-sm font-semibold text-white hover:bg-blue-400"
         >
           New Note
         </button>
@@ -52,7 +52,7 @@ const Layout = () => {
                   <button type="button" className="svg-container mr-2 h-5 w-4">
                     <img src={iconArrowRight} alt="icon arrow right" />
                   </button>
-                  <span className="cursor-pointer font-semibold text-blue hover:text-[#5B7FCD]">
+                  <span className="cursor-pointer font-semibold text-blue-500 hover:text-blue-400">
                     NOTEBOOKS
                   </span>
                 </div>
