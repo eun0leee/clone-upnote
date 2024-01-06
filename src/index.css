@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,4 +8,18 @@ html {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 1400px;
+  max-width: 1920px;
+  height: 100vh;
+  background-color: #1e1f20;
+
+  font-size: 14px;
+}
+
+.svg-container:hover img {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(3%) saturate(190%)
+    hue-rotate(168deg) brightness(97%) contrast(87%);
 }
