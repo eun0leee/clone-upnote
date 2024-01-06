@@ -1,5 +1,5 @@
 const MemoEditor = () => {
-  return <section>MemoEditor</section>;
+  return <section className="p-10">MemoEditor</section>;
 };
 
 export default MemoEditor;
