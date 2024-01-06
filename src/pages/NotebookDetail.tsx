@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-const NotebooksMemoDetail = () => {
+const NotebookDetail = () => {
   const params = useParams();
   return (
     <div>
-      NotebooksMemoDetail Page
+      NotebookDetail Page
       <h2>{params.title}</h2>
     </div>
   );
 };
 
-export default NotebooksMemoDetail;
+export default NotebookDetail;
