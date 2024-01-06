@@ -76,6 +76,6 @@ module.exports = {
       2,
       { namedComponents: ['arrow-function'] },
     ],
-    'arrow-body-style': ['error', 'always'],
+    'arrow-body-style': 'off',
   },
 };
