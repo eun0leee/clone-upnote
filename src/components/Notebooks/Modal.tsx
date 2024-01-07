@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type ModalProps = {
   isModalOpen: boolean;
@@ -6,7 +7,9 @@ type ModalProps = {
 };
 
 const Modal = ({ isModalOpen, setIsModalOpenModal }: ModalProps) => {
+  const navigate = useNavigate();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [notebookNameValue, setNotebookNameValue] = useState('');
 
   useEffect(() => {
     if (isModalOpen) {
@@ -18,6 +21,11 @@ const Modal = ({ isModalOpen, setIsModalOpenModal }: ModalProps) => {
 
   const handleCreateBtn = () => {
     setIsModalOpenModal(false);
+    navigate(`/notebooks/${notebookNameValue}`);
+  };
+
+  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNotebookNameValue(e.target.value);
   };
 
   return (
@@ -35,13 +43,19 @@ const Modal = ({ isModalOpen, setIsModalOpenModal }: ModalProps) => {
             type="text"
             name="name"
             placeholder="Enter notebook name"
+            onChange={handleChangeValue}
             className="w-full rounded-sm bg-gray-650 px-3 py-2 font-medium"
           />
         </label>
         <button
           type="submit"
+          disabled={notebookNameValue === ''}
           onClick={handleCreateBtn}
-          className="absolute bottom-0 right-0 w-fit rounded-md border border-gray-600 px-6 py-[6px] font-medium text-gray-600"
+          className={`absolute bottom-0 right-0 w-fit rounded-md px-6 py-[6px] font-medium ${
+            notebookNameValue === ''
+              ? 'border border-gray-600 text-gray-600'
+              : 'border border-blue-500 bg-blue-500 text-white'
+          } `}
         >
           Create
         </button>
