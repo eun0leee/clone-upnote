@@ -1,13 +1,7 @@
-import { useParams } from 'react-router-dom';
+import NoResults from '@components/common/NoResults';
 
 const NotebookDetail = () => {
-  const params = useParams();
-  return (
-    <div>
-      NotebookDetail Page
-      <h2>{params.title}</h2>
-    </div>
-  );
+  return <NoResults pageName="NotebookDetail" />;
 };
 
 export default NotebookDetail;

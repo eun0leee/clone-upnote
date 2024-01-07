@@ -15,6 +15,7 @@ module.exports = {
         'gray-550': '#777777', // text-placeholder
         'gray-600': '#747474', // icon-dark
         'gray-700': '#373740', // memo-list-border-bottom
+        'gray-750': '#333438', // notebook-header-background
         'gray-800': '#28292A', // memo-header-background
         'gray-900': '#2D2E31', // list-active
         'gray-930': '#1E1F20', // background

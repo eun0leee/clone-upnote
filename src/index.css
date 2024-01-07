@@ -23,3 +23,8 @@ body {
   filter: brightness(0) saturate(100%) invert(58%) sepia(3%) saturate(190%)
     hue-rotate(168deg) brightness(97%) contrast(87%);
 }
+
+.svg-container-blue:hover img {
+  filter: invert(51%) sepia(20%) saturate(1363%) hue-rotate(181deg)
+    brightness(103%) contrast(102%);
+}
