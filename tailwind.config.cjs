@@ -14,9 +14,10 @@ module.exports = {
         'gray-500': '#8B8B8B', // memo-list-updatedAt
         'gray-550': '#777777', // text-placeholder
         'gray-600': '#747474', // icon-dark
+        'gray-650': '#46464A', // modal-input-background
         'gray-700': '#373740', // memo-list-border-bottom
         'gray-750': '#333438', // notebook-header-background
-        'gray-800': '#28292A', // memo-header-background
+        'gray-800': '#28292A', // memo-header-background, modal-background
         'gray-900': '#2D2E31', // list-active
         'gray-930': '#1E1F20', // background
         'gray-950': '#0F0F14', // line-divider

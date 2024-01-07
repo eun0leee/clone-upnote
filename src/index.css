@@ -19,6 +19,11 @@ body {
   font-size: 14px;
 }
 
+dialog:focus,
+input:focus {
+  outline: none;
+}
+
 .svg-container:hover img {
   filter: brightness(0) saturate(100%) invert(58%) sepia(3%) saturate(190%)
     hue-rotate(168deg) brightness(97%) contrast(87%);

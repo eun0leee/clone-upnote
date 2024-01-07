@@ -77,5 +77,11 @@ module.exports = {
       { namedComponents: ['arrow-function'] },
     ],
     'arrow-body-style': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        some: ['id'],
+      },
+    ],
   },
 };
