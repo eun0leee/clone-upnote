@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import Layout from '@components/Layout/Layout';
+import Layout from '@components/common/Layout';
 import AllNotes from '@pages/AllNotes';
 import MemoDetail from '@pages/MemoDetail';
 import NotebookDetail from '@pages/NotebookDetail';
