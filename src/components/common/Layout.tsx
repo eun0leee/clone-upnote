@@ -71,7 +71,7 @@ const Layout = () => {
             </ol>
           </nav>
         ) : undefined}
-        <main className="w-[calc(100vw-208px)]">
+        <main className={`${navToggle ? 'w-[calc(100vw-208px)]' : 'w-full'}`}>
           <Outlet />
         </main>
       </div>
