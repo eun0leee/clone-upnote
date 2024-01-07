@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
-type ModalProps = {
-  isModalOpen: boolean;
-  setIsModalOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import notebooksAtom from '@/recoil/notebooks/atoms';
 
-const Modal = ({ isModalOpen, setIsModalOpenModal }: ModalProps) => {
+const Modal = () => {
   const navigate = useNavigate();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [notebookNameValue, setNotebookNameValue] = useState('');
+  const [isModalOpen, setIsModalOpen] = useRecoilState(notebooksAtom);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -20,7 +19,7 @@ const Modal = ({ isModalOpen, setIsModalOpenModal }: ModalProps) => {
   }, [isModalOpen]);
 
   const handleCreateBtn = () => {
-    setIsModalOpenModal(false);
+    setIsModalOpen(false);
     navigate(`/notebooks/${notebookNameValue}`);
   };
 
