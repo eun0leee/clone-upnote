@@ -1,12 +1,11 @@
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import iconAddWhite from '@/assets/icon_add_gray.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
 import NoResults from '@components/common/NoResults';
-import Modal from '@components/Notebooks/Modal';
 
 const Notebooks = () => {
-  const [isModalOpen, setIsModalOpen] = useRecoilState(notebooksAtom);
+  const setIsModalOpen = useSetRecoilState(notebooksAtom);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -27,7 +26,6 @@ const Notebooks = () => {
       <div className="h-[calc(100%-40px)]">
         <NoResults pageName="Notebooks" />
       </div>
-      {isModalOpen ? <Modal /> : undefined}
     </div>
   );
 };

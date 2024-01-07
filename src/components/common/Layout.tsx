@@ -1,23 +1,28 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import iconAddBlue from '@/assets/icon_add_blue.svg';
 import iconArrowRight from '@/assets/icon_arrow_right.svg';
 import iconHamburger from '@/assets/icon_hamburger.svg';
 import iconNotes from '@/assets/icon_notes.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
+import Modal from '@components/Notebooks/Modal';
 
 const Layout = () => {
   const [navToggle, setNavToggle] = useState(true);
   const { pathname } = useLocation();
-  const setIsModalOpen = useSetRecoilState(notebooksAtom);
+  const [isModalOpen, setIsModalOpen] = useRecoilState(notebooksAtom);
+
+  const isAllNotePage = pathname.includes('/allnotes');
 
   const handleNavToggleBtn = () => {
     setNavToggle((prev) => !prev);
   };
 
-  const isAllNotePage = pathname.includes('/allnotes');
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="h-full">
@@ -70,7 +75,7 @@ const Layout = () => {
                 <button
                   type="button"
                   className="mr-2 h-5 w-5"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={handleOpenModal}
                 >
                   <img src={iconAddBlue} alt="icon add blue" />
                 </button>
@@ -82,6 +87,7 @@ const Layout = () => {
           <Outlet />
         </main>
       </div>
+      {isModalOpen ? <Modal /> : undefined}
     </div>
   );
 };
