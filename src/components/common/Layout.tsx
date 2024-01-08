@@ -7,6 +7,8 @@ import iconArrowRight from '@/assets/icon_arrow_right.svg';
 import iconHamburger from '@/assets/icon_hamburger.svg';
 import iconNotes from '@/assets/icon_notes.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
+import { initMemo } from '@/storage/memo';
+import { initNotebooks } from '@/storage/notebooks';
 import Modal from '@components/Notebooks/Modal';
 
 const Layout = () => {
@@ -15,6 +17,9 @@ const Layout = () => {
   const [isModalOpen, setIsModalOpen] = useRecoilState(notebooksAtom);
 
   const isAllNotePage = pathname.includes('/allnotes');
+
+  initNotebooks();
+  initMemo();
 
   const handleNavToggleBtn = () => {
     setNavToggle((prev) => !prev);
