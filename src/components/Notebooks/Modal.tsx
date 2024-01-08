@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 
 import notebooksAtom from '@/recoil/notebooks/atoms';
+import { addNotebooks } from '@/storage/notebooks';
 
 const Modal = () => {
   const navigate = useNavigate();
@@ -19,8 +20,15 @@ const Modal = () => {
   }, [isModalOpen]);
 
   const handleCreateBtn = () => {
-    setIsModalOpen(false);
-    navigate(`/notebooks/${notebookNameValue}`);
+    const response = addNotebooks(notebookNameValue);
+    if (response.message === 'success') {
+      setIsModalOpen(false);
+      navigate(`/notebooks/${notebookNameValue}`);
+    } else {
+      alert(
+        `The name "${notebookNameValue}" is already taken. \n Please choose a different name.`,
+      );
+    }
   };
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +55,7 @@ const Modal = () => {
           />
         </label>
         <button
-          type="submit"
+          type="button"
           disabled={notebookNameValue === ''}
           onClick={handleCreateBtn}
           className={`absolute bottom-0 right-0 w-fit rounded-md px-6 py-[6px] font-medium ${

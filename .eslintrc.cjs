@@ -83,5 +83,6 @@ module.exports = {
         some: ['id'],
       },
     ],
+    'no-alert': 'off',
   },
 };
