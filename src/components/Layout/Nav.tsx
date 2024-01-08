@@ -1,19 +1,27 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import iconAddBlue from '@/assets/icon_add_blue.svg';
+import iconArrowDown from '@/assets/icon_arrow_down.svg';
 import iconArrowRight from '@/assets/icon_arrow_right.svg';
 import iconNotes from '@/assets/icon_notes.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
+import NavNotebooksList from '@components/Layout/NavNotebooksList';
 
 const Nav = () => {
   const { pathname } = useLocation();
   const setIsModalOpen = useSetRecoilState(notebooksAtom);
+  const [isNotebooksToggleOpen, setIsNotebooksToggleOpen] = useState(true);
 
   const isAllNotePage = pathname.includes('/allnotes');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
+  };
+
+  const handleNotebooksToggleBtn = () => {
+    setIsNotebooksToggleOpen((prev) => !prev);
   };
 
   return (
@@ -33,26 +41,37 @@ const Nav = () => {
             <span className="font-semibold text-gray-300">All Notes</span>
           </Link>
         </li>
-        <li className="flex items-center justify-between px-3 py-2">
-          <div className="flex items-center">
-            <button type="button" className="svg-container mr-2 h-5 w-4">
-              <img src={iconArrowRight} alt="icon arrow right" />
-            </button>
-            <Link
+        <li>
+          <div className="flex items-center justify-between px-3 py-2">
+            <div className="flex items-center">
+              <button
+                type="button"
+                onClick={handleNotebooksToggleBtn}
+                className="svg-container mr-2 h-5 w-4"
+              >
+                {isNotebooksToggleOpen ? (
+                  <img src={iconArrowDown} alt="icon arrow right" />
+                ) : (
+                  <img src={iconArrowRight} alt="icon arrow right" />
+                )}
+              </button>
+              <Link
+                type="button"
+                className="cursor-pointer font-semibold text-blue-500 hover:text-blue-400"
+                to="/notebooks"
+              >
+                NOTEBOOKS
+              </Link>
+            </div>
+            <button
               type="button"
-              className="cursor-pointer font-semibold text-blue-500 hover:text-blue-400"
-              to="/notebooks"
+              className="mr-2 h-5 w-5"
+              onClick={handleOpenModal}
             >
-              NOTEBOOKS
-            </Link>
+              <img src={iconAddBlue} alt="icon add blue" />
+            </button>
           </div>
-          <button
-            type="button"
-            className="mr-2 h-5 w-5"
-            onClick={handleOpenModal}
-          >
-            <img src={iconAddBlue} alt="icon add blue" />
-          </button>
+          {isNotebooksToggleOpen ? <NavNotebooksList /> : undefined}
         </li>
       </ol>
     </nav>
