@@ -19,9 +19,6 @@ export const getNotebooks = () => {
 };
 
 export const addNotebooks = (value: string) => {
-  // value 받아서 set item 처리
-  // create modal 에서 추가
-
   const notebooks = getNotebooks();
   const newNotebooks = [...notebooks, { title: value }];
 
@@ -44,7 +41,16 @@ export const addNotebooks = (value: string) => {
   };
 };
 
-export const deleteNotebooks = () => {
-  // value 받아서 set item 처리
-  // nav의 notebooks, notebooks 페이지에서 삭제
+export const deleteNotebooks = (title: string) => {
+  const notebooks = getNotebooks();
+  const newNotebooks = notebooks.filter(
+    (notebook: NotebooksProps) => notebook.title !== title,
+  );
+
+  LocalStorageSetNotebooks(newNotebooks);
+
+  return {
+    message: 'success',
+    data: newNotebooks,
+  };
 };
