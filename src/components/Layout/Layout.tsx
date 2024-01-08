@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import iconHamburger from '@/assets/icon_hamburger.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
 import { initMemo } from '@/storage/memo';
-import { getNotebooks, initNotebooks } from '@/storage/notebooks';
+import { initNotebooks } from '@/storage/notebooks';
 import Nav from '@components/Layout/Nav';
 import Modal from '@components/Notebooks/Modal';
 
@@ -15,9 +15,6 @@ const Layout = () => {
 
   initNotebooks();
   initMemo();
-
-  const data = getNotebooks();
-  console.log(data);
 
   const handleNavToggleBtn = () => {
     setIsNavToggleOpen((prev) => !prev);
