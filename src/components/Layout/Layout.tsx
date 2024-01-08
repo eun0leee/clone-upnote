@@ -5,19 +5,22 @@ import { useRecoilValue } from 'recoil';
 import iconHamburger from '@/assets/icon_hamburger.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
 import { initMemo } from '@/storage/memo';
-import { initNotebooks } from '@/storage/notebooks';
+import { getNotebooks, initNotebooks } from '@/storage/notebooks';
 import Nav from '@components/Layout/Nav';
 import Modal from '@components/Notebooks/Modal';
 
 const Layout = () => {
-  const [navToggle, setNavToggle] = useState(true);
+  const [isNavToggleOpen, setIsNavToggleOpen] = useState(true);
   const isModalOpen = useRecoilValue(notebooksAtom);
 
   initNotebooks();
   initMemo();
 
+  const data = getNotebooks();
+  console.log(data);
+
   const handleNavToggleBtn = () => {
-    setNavToggle((prev) => !prev);
+    setIsNavToggleOpen((prev) => !prev);
   };
 
   return (
@@ -38,10 +41,10 @@ const Layout = () => {
         </button>
       </header>
       <div className="flex h-[calc(100vh-44px)]">
-        {navToggle ? <Nav /> : undefined}
+        {isNavToggleOpen ? <Nav /> : undefined}
         <main
           className={`${
-            navToggle
+            isNavToggleOpen
               ? 'w-[calc(100vw-224px)] min-w-[calc(1400px-224px)]'
               : 'w-full'
           }`}
