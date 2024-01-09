@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { getMemo } from '@/storage/memo';
 import type { GetMemoResponse } from '@/types/memo';
@@ -7,6 +7,7 @@ import getNotebookMemo from '@/utils/getNotebookMemo';
 
 const MemoList = () => {
   const { pathname } = useLocation();
+  const { id } = useParams();
   const [, page, title] = pathname.split('/');
   const memos = getMemo();
 
@@ -24,25 +25,31 @@ const MemoList = () => {
         {convertedMemos
           .reverse()
           .map((memo: GetMemoResponse, index: number) => (
-            <li
-              key={memo.createdAt}
-              className={` flex flex-col gap-2 py-4 ${
-                index === 0 ? 'bg-gray-900 px-4' : 'mx-4'
-              } ${
-                index === convertedMemos.length - 1
-                  ? undefined
-                  : 'border-b border-b-gray-700'
-              }`}
-            >
-              <h2 className="text-sm font-medium text-gray-300">
-                {memo.title === '' ? 'New Note' : memo.title}
-              </h2>
-              <p className="font-normal text-gray-400">
-                {memo.text === '' ? 'No additional text' : memo.text}
-              </p>
-              <span className="text-xs text-gray-500">
-                {formatTimestamp(memo.updatedAt)}
-              </span>
+            <li key={memo.createdAt}>
+              <Link
+                to={
+                  page === 'allnotes'
+                    ? `/allnotes/${memo.createdAt}`
+                    : `/notebooks/${title}/memo/${memo.createdAt}`
+                }
+                className={` flex flex-col gap-2 py-4 ${
+                  Number(id) === memo.createdAt ? 'bg-gray-900 px-4' : 'mx-4'
+                } ${
+                  index === convertedMemos.length - 1
+                    ? undefined
+                    : 'border-b border-b-gray-700'
+                }`}
+              >
+                <h2 className="text-sm font-medium text-gray-300">
+                  {memo.title === '' ? 'New Note' : memo.title}
+                </h2>
+                <p className="font-normal text-gray-400">
+                  {memo.text === '' ? 'No additional text' : memo.text}
+                </p>
+                <span className="text-xs text-gray-500">
+                  {formatTimestamp(memo.updatedAt)}
+                </span>
+              </Link>
             </li>
           ))}
       </ol>

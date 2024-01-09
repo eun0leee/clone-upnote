@@ -10,7 +10,7 @@ import handleDeleteNotebook from '@/utils/handleDeleteNotebook';
 
 const NavNotebooksList = () => {
   const [hoveredNotebook, setHoveredNotebook] = useState<string | null>(null);
-  const params = useParams();
+  const { title } = useParams();
   const notebooks = getNotebooks();
 
   return (
@@ -22,7 +22,7 @@ const NavNotebooksList = () => {
             onMouseEnter={() => setHoveredNotebook(notebook.title)}
             onMouseLeave={() => setHoveredNotebook(null)}
             className={`flex h-10 items-center justify-between pl-9 pr-3 font-medium text-gray-300 hover:bg-gray-900 ${
-              notebook.title === params.title ? 'bg-gray-900' : undefined
+              notebook.title === title ? 'bg-gray-900' : undefined
             }`}
           >
             <div className="flex items-center">
