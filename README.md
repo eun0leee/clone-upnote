@@ -2,7 +2,7 @@
 
 ## 🔗 배포 링크
 
-- clone-upnote.vercel.app
+- [clone-upnote.vercel.app](clone-upnote.vercel.app)
 
 ## 🐢 실행 방법
 
