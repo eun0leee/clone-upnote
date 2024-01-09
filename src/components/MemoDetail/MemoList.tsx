@@ -27,12 +27,12 @@ const MemoList = () => {
 
   return (
     <section className="h-full w-64 border-r border-r-gray-950">
-      <header className="border-b border-b-gray-950 bg-gray-800 px-4 py-[7px]">
+      <header className="h-10 border-b border-b-gray-950 bg-gray-800 px-4 py-[7px]">
         <h1 className="text-base font-medium text-gray-300">
           {page === 'allnotes' ? 'All Notes' : title}
         </h1>
       </header>
-      <ol className="h-[calc(100vh-83px)] overflow-auto">
+      <ol className="h-[calc(100vh-84px)] overflow-auto">
         {convertedMemos.reverse().map((memo: GetMemoResponse) => (
           <li
             key={memo.createdAt}

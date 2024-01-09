@@ -32,7 +32,7 @@ const Nav = () => {
         <li className="mb-2">
           <Link
             type="button"
-            className={`flex w-full cursor-pointer items-center px-3  py-2 hover:bg-gray-900 ${
+            className={`flex h-[39px] w-full cursor-pointer items-center px-3  py-2 hover:bg-gray-900 ${
               isAllNotePage ? 'bg-gray-900' : undefined
             }`}
             to="/allnotes"
