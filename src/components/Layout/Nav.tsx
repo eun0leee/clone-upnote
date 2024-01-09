@@ -7,12 +7,14 @@ import iconArrowDown from '@/assets/icon_arrow_down.svg';
 import iconArrowRight from '@/assets/icon_arrow_right.svg';
 import iconNotes from '@/assets/icon_notes.svg';
 import notebooksAtom from '@/recoil/notebooks/atoms';
+import { getMemo } from '@/storage/memo';
 import NavNotebooksList from '@components/Layout/NavNotebooksList';
 
 const Nav = () => {
   const { pathname } = useLocation();
   const setIsModalOpen = useSetRecoilState(notebooksAtom);
   const [isNotebooksToggleOpen, setIsNotebooksToggleOpen] = useState(true);
+  const memos = getMemo();
 
   const isAllNotePage = pathname.includes('/allnotes');
 
@@ -38,7 +40,10 @@ const Nav = () => {
             <span className="mr-2 flex h-5 w-4 items-center">
               <img src={iconNotes} alt="icon notes" />
             </span>
-            <span className="font-semibold text-gray-300">All Notes</span>
+            <span className="mr-1 font-semibold text-gray-300">All Notes</span>
+            <span className="text-xs font-semibold text-gray-500">
+              {memos.length}
+            </span>
           </Link>
         </li>
         <li>

@@ -5,6 +5,7 @@ import iconDelete from '@/assets/icon_delete.svg';
 import imgNotebook from '@/assets/img_notebook.png';
 import { getNotebooks } from '@/storage/notebooks';
 import type { NotebooksProps } from '@/types/notebooks';
+import getNotebookMemo from '@/utils/getNotebookMemo';
 import handleDeleteNotebook from '@/utils/handleDeleteNotebook';
 
 const NavNotebooksList = () => {
@@ -26,7 +27,12 @@ const NavNotebooksList = () => {
           >
             <div className="flex items-center">
               <img src={imgNotebook} alt="notebook" className="mr-2 w-6" />
-              <span>{notebook.title}</span>
+              <span className="mr-1">{notebook.title}</span>
+              <span className="text-xs font-semibold text-gray-500">
+                {getNotebookMemo(notebook.title).length === 0
+                  ? undefined
+                  : getNotebookMemo(notebook.title).length}
+              </span>
             </div>
             {hoveredNotebook === notebook.title ? (
               <button
