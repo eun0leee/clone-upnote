@@ -19,8 +19,14 @@ const Editor = () => {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <PlainTextPlugin
-        contentEditable={<ContentEditable />}
-        placeholder={<div>Type / for menu</div>}
+        contentEditable={
+          <ContentEditable className="h-[calc(100vh-84px)] p-7 text-gray-300 focus:outline-none" />
+        }
+        placeholder={
+          <div className="absolute left-7 top-7 font-medium text-gray-550">
+            Type / for menu or select from Templates
+          </div>
+        }
         ErrorBoundary={LexicalErrorBoundary}
       />
     </LexicalComposer>
