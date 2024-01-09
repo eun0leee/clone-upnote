@@ -1,5 +1,5 @@
 import { MEMO_LOCALSTORAGE_KEY } from '@/constants/localStorageKey';
-import type { AddMemoRequest, GetMemoResponse } from '@/types/memo';
+import type { AddMemoRequestProps, GetMemoResponseProps } from '@/types/memo';
 
 const LocalStorageSetMemos = (value: unknown) => {
   localStorage.setItem(MEMO_LOCALSTORAGE_KEY, JSON.stringify(value));
@@ -22,7 +22,7 @@ export const getMemo = () => {
   return localData !== null ? JSON.parse(localData) : undefined;
 };
 
-export const addMemo = ({ timestamp, notebookName }: AddMemoRequest) => {
+export const addMemo = ({ timestamp, notebook }: AddMemoRequestProps) => {
   const memos = getMemo();
   const newMemos = [
     ...memos,
@@ -31,7 +31,8 @@ export const addMemo = ({ timestamp, notebookName }: AddMemoRequest) => {
       text: '',
       createdAt: timestamp,
       updatedAt: timestamp,
-      notebook: notebookName,
+      notebook,
+      content: '',
     },
   ];
   LocalStorageSetMemos(newMemos);
@@ -45,7 +46,7 @@ export const addMemo = ({ timestamp, notebookName }: AddMemoRequest) => {
 export const deleteMemo = (createdAt: number) => {
   const memos = getMemo();
   const newMemos = memos.filter(
-    (memo: GetMemoResponse) => memo.createdAt !== createdAt,
+    (memo: GetMemoResponseProps) => memo.createdAt !== createdAt,
   );
 
   LocalStorageSetMemos(newMemos);

@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 
 import iconDelete from '@/assets/icon_delete.svg';
 import { deleteMemo, getMemo } from '@/storage/memo';
-import type { GetMemoResponse } from '@/types/memo';
+import type { GetMemoResponseProps } from '@/types/memo';
 import formatTimestamp from '@/utils/formatTimestamp';
 import getNotebookMemo from '@/utils/getNotebookMemo';
 
@@ -33,7 +33,7 @@ const MemoList = () => {
         </h1>
       </header>
       <ol className="h-[calc(100vh-84px)] overflow-auto">
-        {convertedMemos.reverse().map((memo: GetMemoResponse) => (
+        {convertedMemos.reverse().map((memo: GetMemoResponseProps) => (
           <li
             key={memo.createdAt}
             className={`hover:bg-gray-900 ${

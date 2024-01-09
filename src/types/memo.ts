@@ -1,9 +1,9 @@
-export interface AddMemoRequest {
+export interface AddMemoRequestProps {
   timestamp: number;
-  notebookName: string | null;
+  notebook: string | null;
 }
 
-export interface GetMemoResponse {
+export interface GetMemoResponseProps {
   title: string;
   text: string;
   createdAt: number;

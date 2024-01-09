@@ -9,15 +9,15 @@ const useAddAndMoveToMemo = () => {
 
   const timestamp = new Date().getTime();
 
-  let notebookName: string | null = '';
+  let notebook: string | null = '';
   if (page === 'allnotes') {
-    notebookName = null;
+    notebook = null;
   } else {
-    notebookName = title;
+    notebook = title;
   }
 
   const moveToMemo = () => {
-    addMemo({ timestamp, notebookName });
+    addMemo({ timestamp, notebook });
 
     if (page === 'allnotes') {
       navigate(`/allnotes/${timestamp}`);
