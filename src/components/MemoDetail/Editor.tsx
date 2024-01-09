@@ -1,7 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin';
+import { $getRoot, type EditorState } from 'lexical';
 
 const theme = {};
 
@@ -14,6 +18,13 @@ const Editor = () => {
     namespace: 'MemoEditor',
     theme,
     onError,
+  };
+
+  const onChange = (editorState: EditorState) => {
+    editorState.read(() => {
+      const root = $getRoot();
+      console.log('root', root.__cachedText);
+    });
   };
 
   return (
@@ -29,6 +40,8 @@ const Editor = () => {
         }
         ErrorBoundary={LexicalErrorBoundary}
       />
+      <HistoryPlugin />
+      <OnChangePlugin onChange={onChange} />
     </LexicalComposer>
   );
 };
