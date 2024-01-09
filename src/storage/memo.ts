@@ -56,3 +56,29 @@ export const deleteMemo = (createdAt: number) => {
     data: newMemos,
   };
 };
+
+export const typeMemo = (content: string | null, id: number) => {
+  const memos = getMemo();
+
+  const [title = '', text = ''] = content?.split(`\n`) || [];
+
+  const newMemos = memos.map((memo: GetMemoResponseProps) => {
+    if (memo.createdAt === id) {
+      return {
+        ...memo,
+        title,
+        text,
+        updatedAt: new Date().getTime(),
+        content,
+      };
+    }
+    return memo;
+  });
+
+  LocalStorageSetMemos(newMemos);
+
+  return {
+    message: 'success',
+    data: newMemos,
+  };
+};

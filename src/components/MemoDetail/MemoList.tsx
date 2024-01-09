@@ -50,10 +50,10 @@ const MemoList = () => {
               onMouseLeave={() => setHoveredMemo(null)}
               className={`relative mx-4 flex flex-col gap-2 border-b border-b-gray-700 py-4 `}
             >
-              <h2 className="text-sm font-medium text-gray-300">
+              <h2 className="w-36 truncate text-sm font-medium text-gray-300">
                 {memo.title === '' ? 'New Note' : memo.title}
               </h2>
-              <p className="font-normal text-gray-400">
+              <p className="w-36 truncate font-normal text-gray-400">
                 {memo.text === '' ? 'No additional text' : memo.text}
               </p>
               <span className="text-xs text-gray-500">

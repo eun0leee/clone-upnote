@@ -6,6 +6,9 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin';
 import { $getRoot, type EditorState } from 'lexical';
+import { useParams } from 'react-router-dom';
+
+import { typeMemo } from '@/storage/memo';
 
 const theme = {};
 
@@ -14,6 +17,7 @@ const onError = (error: Error) => {
 };
 
 const Editor = () => {
+  const { id } = useParams();
   const initialConfig = {
     namespace: 'MemoEditor',
     theme,
@@ -23,7 +27,11 @@ const Editor = () => {
   const onChange = (editorState: EditorState) => {
     editorState.read(() => {
       const root = $getRoot();
-      console.log('root', root.__cachedText);
+      setTimeout(() => {
+        if (root.__cachedText !== '') {
+          typeMemo(root.__cachedText, Number(id));
+        }
+      }, 2000);
     });
   };
 
