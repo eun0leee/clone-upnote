@@ -1,8 +1,11 @@
-import { useParams } from 'react-router-dom';
+import Editor from './Editor';
 
 const MemoEditor = () => {
-  const { id } = useParams();
-  return <section className="p-10">MemoEditor {id}</section>;
+  return (
+    <section className="px-7 py-3">
+      <Editor />
+    </section>
+  );
 };
 
 export default MemoEditor;
