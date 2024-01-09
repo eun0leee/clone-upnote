@@ -1,4 +1,5 @@
 import { MEMO_LOCALSTORAGE_KEY } from '@/constants/localStorageKey';
+import type { AddMemoRequest } from '@/types/memo';
 
 const LocalStorageSetMemo = (value: unknown) => {
   localStorage.setItem(MEMO_LOCALSTORAGE_KEY, JSON.stringify(value));
@@ -21,9 +22,24 @@ export const getMemo = () => {
   return localData !== null ? JSON.parse(localData) : undefined;
 };
 
-export const addMemo = () => {
-  // value 받아서 set item 처리
-  // header의 버튼과, noresult가 allnotes 또는 notebookdetail 일 때 추가
+export const addMemo = ({ timestamp, notebookName }: AddMemoRequest) => {
+  const memos = getMemo();
+  const newMemo = [
+    ...memos,
+    {
+      title: '',
+      text: '',
+      createdAt: timestamp,
+      updatedAt: timestamp,
+      notebook: notebookName,
+    },
+  ];
+  LocalStorageSetMemo(newMemo);
+
+  return {
+    message: 'success',
+    data: newMemo,
+  };
 };
 
 export const deleteMemo = () => {

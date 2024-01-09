@@ -1,11 +1,11 @@
 import { useSetRecoilState } from 'recoil';
 
 import { NO_RESULTS } from '@/constants/common';
-import useMoveToMemo from '@/hooks/useMoveToMemo';
+import useAddAndMoveToMemo from '@/hooks/useAddAndMoveToMemo';
 import notebooksAtom from '@/recoil/notebooks/atoms';
 
 const NoResults = ({ pageName }: { pageName: string }) => {
-  const moveToMemo = useMoveToMemo();
+  const addAndMoveToMemo = useAddAndMoveToMemo();
   const setIsModalOpen = useSetRecoilState(notebooksAtom);
   const findNoResultsConstant = NO_RESULTS.find(
     (noResult) => noResult.pageName === pageName,
@@ -15,7 +15,7 @@ const NoResults = ({ pageName }: { pageName: string }) => {
     if (pageName === 'Notebooks') {
       setIsModalOpen(true);
     } else {
-      moveToMemo();
+      addAndMoveToMemo();
     }
   };
 

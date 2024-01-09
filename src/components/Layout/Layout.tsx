@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import iconHamburger from '@/assets/icon_hamburger.svg';
-import useMoveToMemo from '@/hooks/useMoveToMemo';
+import useAddAndMoveToMemo from '@/hooks/useAddAndMoveToMemo';
 import notebooksAtom from '@/recoil/notebooks/atoms';
 import { initMemo } from '@/storage/memo';
 import { initNotebooks } from '@/storage/notebooks';
@@ -11,7 +11,7 @@ import Nav from '@components/Layout/Nav';
 import Modal from '@components/Notebooks/Modal';
 
 const Layout = () => {
-  const moveToMemo = useMoveToMemo();
+  const addAndMoveToMemo = useAddAndMoveToMemo();
   const [isNavToggleOpen, setIsNavToggleOpen] = useState(true);
   const isModalOpen = useRecoilValue(notebooksAtom);
 
@@ -23,7 +23,7 @@ const Layout = () => {
   };
 
   const handleNewNoteBtn = () => {
-    moveToMemo();
+    addAndMoveToMemo();
   };
 
   return (
