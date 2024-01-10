@@ -10,8 +10,8 @@ import NotFound from '@pages/NotFound';
 const router = createBrowserRouter([
   {
     element: <Layout />,
-    errorElement: <NotFound />,
     children: [
+      { path: '*', element: <NotFound /> },
       { path: '/', element: <Navigate to="/allnotes" /> },
       {
         path: '/allnotes',
