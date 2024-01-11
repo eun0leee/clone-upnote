@@ -16,14 +16,14 @@ const Notebooks = () => {
 
   return (
     <section className="h-full">
-      <header className="flex justify-between border-b border-b-gray-950 bg-gray-750 px-4 py-[7px]">
+      <header className="flex items-center justify-between border-b border-b-gray-950 bg-gray-750 px-4 py-[7px] pr-8">
         <div className="flex items-center gap-1 text-base font-medium">
           <h1 className=" text-gray-300">Notebooks</h1>
           <span className="text-gray-500">({notebooks.length})</span>
         </div>
         <button
           type="button"
-          className="svg-container-blue mr-2 h-5 w-5"
+          className="svg-container-blue flex h-5 w-5 items-center justify-center"
           onClick={handleOpenModal}
         >
           <img src={iconAddWhite} alt="icon add blue" />
