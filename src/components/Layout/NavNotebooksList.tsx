@@ -25,9 +25,9 @@ const NavNotebooksList = () => {
               notebook.title === title ? 'bg-gray-900' : undefined
             }`}
           >
-            <div className="flex items-center">
+            <div className="flex w-full items-center">
               <img src={imgNotebook} alt="notebook" className="mr-2 w-6" />
-              <span className="mr-1">{notebook.title}</span>
+              <span className="mr-1 truncate">{notebook.title}</span>
               <span className="text-xs font-semibold text-gray-500">
                 {getNotebookMemo(notebook.title).length === 0
                   ? undefined
