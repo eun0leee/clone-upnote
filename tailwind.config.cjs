@@ -29,7 +29,18 @@ module.exports = {
       addUtilities({});
     },
     ({ addComponents }) => {
-      addComponents({});
+      addComponents({
+        '.color-scroll::-webkit-scrollbar': {
+          width: '12px',
+          backgroundColor: '#2c2c2c',
+        },
+        '.color-scroll::-webkit-scrollbar-thumb': {
+          width: '5px',
+          backgroundColor: '#6b6b6b',
+          border: '4px solid #2c2c2c',
+          borderRight: 'none',
+        },
+      });
     },
   ],
 };

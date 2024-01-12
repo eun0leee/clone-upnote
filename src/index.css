@@ -20,6 +20,10 @@ body {
   font-size: 14px;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 dialog:focus,
 input:focus {
   outline: none;

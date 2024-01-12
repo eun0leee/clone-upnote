@@ -32,7 +32,7 @@ const MemoList = () => {
           {page === 'allnotes' ? 'All Notes' : title}
         </h1>
       </header>
-      <ol className="h-[calc(100vh-84px)] overflow-auto">
+      <ol className="color-scroll h-[calc(100vh-84px)] overflow-auto">
         {convertedMemos.reverse().map((memo: GetMemoResponseProps) => (
           <li
             key={memo.createdAt}

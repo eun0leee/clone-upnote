@@ -27,7 +27,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="w-56 border-r border-r-gray-950">
+    <nav className="color-scroll h-[calc(100vh-44px)] w-56 overflow-auto border-r border-r-gray-950">
       <ol>
         <li className="mb-2">
           <Link
