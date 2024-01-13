@@ -45,12 +45,10 @@ const Layout = () => {
         </button>
       </header>
       <div className="flex h-[calc(100vh-44px)]">
-        {isNavToggleOpen ? <Nav /> : undefined}
+        <Nav />
         <main
-          className={`${
-            isNavToggleOpen
-              ? 'w-[calc(100vw-224px)] min-w-[calc(1400px-224px)]'
-              : 'w-full'
+          className={`z-10 w-[calc(100vw-224px)] bg-gray-930 transition delay-200 ease-in-out ${
+            isNavToggleOpen ? 'translate-x-0' : 'translate-x-[-223px]'
           }`}
         >
           <Outlet />
