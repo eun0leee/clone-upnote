@@ -22,7 +22,7 @@ const NotebooksGallery = () => {
           onMouseLeave={() => setHoveredNotebook(null)}
         >
           <img src={imgNotebook} alt="notebook" className="min-w-28" />
-          <span className="absolute bottom-0 flex h-10 w-full items-center rounded-b-xl bg-black bg-opacity-30 px-2 font-semibold text-gray-300">
+          <span className="absolute bottom-0 h-10 w-full truncate rounded-b-[10px] bg-black bg-opacity-30 px-2 py-2 font-semibold text-gray-300">
             {notebook.title}
           </span>
           {hoveredNotebook === notebook.title ? (
