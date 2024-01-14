@@ -20,7 +20,7 @@ export const getNotebooks = () => {
 
 export const addNotebooks = (value: string) => {
   const notebooks = getNotebooks();
-  const newNotebooks = [...notebooks, { title: value }];
+  const newNotebooks = [{ title: value }, ...notebooks];
 
   const findValueDuplicated = notebooks.find(
     (notebook: NotebooksProps) => notebook.title === value,

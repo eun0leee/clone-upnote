@@ -25,7 +25,6 @@ export const getMemo = () => {
 export const addMemo = ({ timestamp, notebook }: AddMemoRequestProps) => {
   const memos = getMemo();
   const newMemos = [
-    ...memos,
     {
       title: '',
       text: '',
@@ -34,6 +33,7 @@ export const addMemo = ({ timestamp, notebook }: AddMemoRequestProps) => {
       notebook,
       content: '',
     },
+    ...memos,
   ];
   LocalStorageSetMemos(newMemos);
 

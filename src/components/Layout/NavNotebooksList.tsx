@@ -15,7 +15,7 @@ const NavNotebooksList = () => {
 
   return (
     <ol>
-      {notebooks.reverse().map((notebook: NotebooksProps) => (
+      {notebooks.map((notebook: NotebooksProps) => (
         <li key={notebook.title}>
           <Link
             to={`/notebooks/${notebook.title}`}

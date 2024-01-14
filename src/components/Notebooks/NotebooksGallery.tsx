@@ -13,7 +13,7 @@ const NotebooksGallery = () => {
 
   return (
     <ol className="flex flex-wrap gap-10 px-7 py-4">
-      {notebooks.reverse().map((notebook: NotebooksProps) => (
+      {notebooks.map((notebook: NotebooksProps) => (
         <li key={notebook.title}>
           <Link
             to={`/notebooks/${notebook.title}`}

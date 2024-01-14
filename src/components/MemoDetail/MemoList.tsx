@@ -33,7 +33,7 @@ const MemoList = () => {
         </h1>
       </header>
       <ol className="color-scroll h-[calc(100vh-84px)] overflow-auto">
-        {convertedMemos.reverse().map((memo: GetMemoResponseProps) => (
+        {convertedMemos.map((memo: GetMemoResponseProps) => (
           <li
             key={memo.createdAt}
             className={`hover:bg-gray-900 ${
